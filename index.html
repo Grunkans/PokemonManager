@@ -5,12 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pokemon manager</title>
         <link rel="stylesheet" href="body.css">
-		<script type="module" src="svenska-ord.js"> </script>
+		<link rel="stylesheet" href="searchView.css">
+		<script type="module" src="script.js"> </script>
+		
+
 	
     </head>
 
 	<body>
-		<header class="header-container">
+		<header>
 			<div class="content-header">
 				<div><a href="main.html" class="loggawebb"> <img src="logo.jpg" alt="Bild på logga, pokemon"></a></div>
 				<div></div>
@@ -22,16 +25,21 @@
 			</div>
 		</header>
 
-
 		<main>
-			<section class="searchView">
+			<section id="searchView">
+				<h2>Gather your team</h2>
+
+				<div class="searchField">
+					
+					<input id="inputSearchField" type="text"  placeholder="find pokémon" />
+					<button id="buttonSearch"> Search </button>
+					
+					
+				</div>
+				
 				
 
-
 			</section>
-
-		
-
 		</main>
 
 
