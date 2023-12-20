@@ -1,5 +1,4 @@
 const searchButton = document.getElementById("buttonSearch");
-
 const searchInput = document.getElementById("inputSearchField");
 
  
@@ -21,18 +20,6 @@ searchButton.addEventListener("click", () => {
  
 
         fetch(`https://pokeapi.co/api/v2/${endpoint}`)
-
-        .then((response) => {
-
-            if (!response.ok) {
-
-                throw new Error(`Anropet misslyckades med statuskod: ${response.status}`);
-
-            }
-
-            return response.json();
-
-        })
 
         .then((data) => {
 
