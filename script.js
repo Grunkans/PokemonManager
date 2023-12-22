@@ -1,5 +1,6 @@
 const searchButton = document.getElementById("buttonSearch");
 const searchInput = document.getElementById("inputSearchField");
+const myTeamButton = document.getElementById("buttonMyTeam");
 
 let pokemonList = [];
 
@@ -28,26 +29,22 @@ searchInput.addEventListener('input', () => {
     // rullgardin
 
 
-function showSuggestions(searchTerm) {
+	function showSuggestions(searchTerm) {
 
-    let suggestions = pokemonList.filter(name => name.toLowerCase().startsWith(searchTerm));
-	let suggestionsElement = document.getElementById("suggestions");
+		let suggestions = pokemonList.filter(name => name.toLowerCase().startsWith(searchTerm));
+		let suggestionsElement = document.getElementById("suggestions");
+		suggestionsElement.innerHTML = '';
+		suggestions.forEach(suggestion => {
+			let div = document.createElement('div');
+			div.textContent = suggestion;
+			div.onclick = function() {
+				fetchPokemonData(suggestion);
+			};
+			suggestionsElement.appendChild(div);
+		});
+		suggestionsElement.style.display = suggestions.length > 0 ? 'block' : 'none';
 
-	suggestionsElement.innerHTML = '';
-
-    suggestions.forEach(suggestion => {
-        let div = document.createElement('div');
-        div.textContent = suggestion;
-        div.onclick = function() {
-            fetchPokemonData(suggestion);
-        };
-        suggestionsElement.appendChild(div);
-
-    });
-
-    suggestionsElement.style.display = suggestions.length > 0 ? 'block' : 'none';
-
-}
+	}
 
 function fetchPokemonData(pokemonName) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
@@ -108,6 +105,7 @@ function updateTeamList() {
 
         const kickButton = document.createElement('button');
         kickButton.textContent = 'Kick';
+		kickButton.className = 'kickButton';
         kickButton.onclick = function() {
             kickFromTeam(index);
 
@@ -142,23 +140,39 @@ function checkTeamSize() {
  
 
 function kickFromTeam(index) {
-    team.splice(index, 1); // Tar bort Pokémonen från arrayen
-    updateTeamList();      // Uppdaterar listan som visas för användaren
+	team.splice(index, 1); // Tar bort Pokémonen från arrayen
+	updateTeamList();      // Uppdaterar listan som visas för användaren
 
 }
 
-//.searchField ska döljas vid klick på #buttonMyTeam
 
-const hideInTeamView = document.querySelector("searchField");
-console.log(hideInTeamView);
-const hideSearchViewButton = document.getElementById("buttonMyTeam");
 
-document.addEventListener("DOMContentLoaded", function() {
-hideSearchViewButton.addEventListener('click', function() {
-	console.log("Button clicked");
-    if (hideInTeamView) {
-		console.log("Hiding search field");
-        hideInTeamView.style.display = 'none';
-    }
+// Dölj .searchField vid klick på #buttonMyTeam
+
+myTeamButton.addEventListener('click', function() {
+	const searchField = document.querySelector(".searchField");
+	const teamSection = document.getElementById("teamSection");
+	if (searchField && teamSection) {
+		searchField.style.display = 'none';
+		teamSection.style.display = 'block';
+
+	}
+
 });
+
+
+
+// Visa "buttonFindPokemon" och "searchView" när sidan laddas
+
+const initialSearchViewButton = document.getElementById("buttonFindPokemon");
+const initialSearchView = document.getElementById("searchView");
+initialSearchViewButton.addEventListener('click', function() {
+	const searchField = document.querySelector(".searchField");
+	const teamSection = document.getElementById("teamSection");
+	if (searchField && teamSection) {
+		searchField.style.display = 'block';
+		teamSection.style.display = 'none';
+
+	}
+
 });
