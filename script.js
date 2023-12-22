@@ -4,6 +4,7 @@ const searchInput = document.getElementById("inputSearchField");
 let pokemonList = [];
 
 
+
 // Hämtar alla pokemons när sidan laddas
 
 window.onload = function() {
@@ -146,4 +147,18 @@ function kickFromTeam(index) {
 
 }
 
+//.searchField ska döljas vid klick på #buttonMyTeam
 
+const hideInTeamView = document.querySelector("searchField");
+console.log(hideInTeamView);
+const hideSearchViewButton = document.getElementById("buttonMyTeam");
+
+document.addEventListener("DOMContentLoaded", function() {
+hideSearchViewButton.addEventListener('click', function() {
+	console.log("Button clicked");
+    if (hideInTeamView) {
+		console.log("Hiding search field");
+        hideInTeamView.style.display = 'none';
+    }
+});
+});
