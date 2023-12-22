@@ -1,0 +1,28 @@
+#teamSection {
+    margin-top: 20px;
+
+}
+
+#teamList li {
+    list-style-type: none;
+
+}
+
+#reminder {
+    color: rgb(85, 7, 7);
+    margin-top: 10px;
+
+}
+
+#teamList img {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+
+}
+
+#teamList li {
+    list-style-type: none;
+    margin-bottom: 10px;
+
+}

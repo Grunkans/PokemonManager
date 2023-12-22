@@ -27,3 +27,39 @@
 	padding:0.1em;
 }
 
+.suggestions-dropdown {
+    position: absolute;
+	top: 100%; /* Positionera direkt under sökfältet */
+    left: 0;
+    right: 0;
+    max-height: 200px; /* Maxhöjd för att begränsa storleken */
+    overflow-y: auto; /* Lägg till scroll för långa listor */
+    width: 100%; /* Gör bredden samma som sökfältet */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #FFCA06;
+    z-index: 1000; /* Se till att den ligger över andra element */
+
+}
+
+.suggestions-dropdown div {
+    padding: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+
+}
+
+.suggestions-dropdown div:hover {
+    background-color: #f6f6f6;
+
+}
+
+#nicknameField{
+	height: 1.6em;
+	width: 12em;
+	border-radius: 0.4em;
+	padding:0.1em;
+}
+
+
